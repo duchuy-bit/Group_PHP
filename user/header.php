@@ -27,18 +27,56 @@
 
     <!-- Template Stylesheet -->
     <link href="./css/style.css" rel="stylesheet">
+    <script type = "text/javascript" 
+        src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <!-- <script type = "text/javascript" language = "javascript">
+            $(document).ready(function() {
+                $("a").click(function(event){
+                event.preventDefault();
+                // alert( "Default behavior is disabled!" );
+                });
+            });
+    </script> -->
 </head>
 <?php 
 //-- you can modified it like you want
 
 // echo $width = "<script>var w = window.innerWidth;
 // var h = window.innerHeight;</script><br>";
-    $height = "<script>document.write(window.innerHeight);</script>";
-echo $height."<br>";
-echo $width = "<script>document.write(window.innerWidth);</script>";
+    // $height = "<script>document.write(window.innerHeight);</script>";
+// echo $height."<br>";
+// echo $width = "<script>document.write(window.innerWidth);</script>";
 
 ?>
-<body>
+
+
+<!-- ---------------------------------------------------- -->
+<script >
+        window.onload=function () {
+            
+            // var objDiv = document.getElementById("div1");
+            // objDiv.scrollTop = objDiv.scrollHeight;
+            <?php
+            if(isset($_GET['trang'])){
+            ?>
+            document.querySelector('#div1').scrollIntoView()
+            // alert( "Default behavior is disabled!" + objDiv.scrollHeight );
+            <?php
+            }
+            ?>
+        }
+        // var objDiv = document.getElementById("list_service");
+        // objDiv.scrollTop = objDiv.scrollHeight;
+        // $("#div1").animate({ scrollTop: $('#div1').prop("scrollHeight")}, 1000);
+        // window.setInterval(function() {
+        //     var elem = document.getElementById('list_service');
+        //     elem.scrollTop = elem.scrollHeight;
+        // }, 5000);
+    </script> 
+<!-- ---------------------------------------------------------- -->
+
+<body style='overflow:auto'>
     <!-- Topbar Start -->
     <div class=" container-fluid padding">
         <div class="row padding">
@@ -73,7 +111,7 @@ echo $width = "<script>document.write(window.innerWidth);</script>";
             <div class="col-xs-12 col-sm-12 text-center col-md-3 py-2">
                 <div class="d-inline-flex align-items-center">
                     <div class="text-start">
-                        <h6 class="text-uppercase mb-1"><a href="#">Nguyen Duc Huy</a></h6>
+                        <h6 class="text-uppercase mb-1"><a href="login.php">Nguyen Duc Huy</a></h6>
                         <span style="font-weight: bold;text-decoration:underline;">
                             <a href="" style="color: grey;"> Đăng xuất</a>
                         </span>

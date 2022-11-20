@@ -456,3 +456,17 @@
 .blog-item a:hover i::after {
     width: 50px;
 }
+
+.img-fluid {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.blog-item .row{
+    height: 400px;
+}
+
+
+ /* css login */
+ 

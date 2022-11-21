@@ -58,6 +58,18 @@
             case 'page_edit_dsdv':
                 include "DichVu/edit.php";
                 break;
+            
+            case 'page_dskh':
+                include "Customer/index.php";
+                break;
+
+            case 'page_add_dskh':
+                include "Customer/add.php";
+                break;
+
+            case 'page_edit_dskh':
+                include "Customer/edit.php";
+                break;
 
             default:
                 include "../admin/page/home.php";

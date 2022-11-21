@@ -1,6 +1,6 @@
 <script>
   function xoaNhanVien() {
-    var conf = confirm("Bạn có chắc chắn muốn xóa thông tin dịch vụ này không?");
+    var conf = confirm("Bạn có chắc chắn muốn xóa thông tin khách hàng này không?");
     return conf;
   }
 </script>
@@ -22,7 +22,7 @@
 
 <?php
   $conn = get_connection();
-  $sql = "SELECT * FROM dichvu";
+  $sql = "SELECT * FROM khachhang";
   $dsnv = mysqli_query($conn, $sql);
 ?>
 
@@ -32,7 +32,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Thông tin dịch vụ</h1>
+            <h1>Thông tin khách hàng</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -58,17 +58,17 @@
             echo "<div class='alert alert-success'>".$thongbao."</div>";
         ?>
         <div class="card-header">
-          <a href="master.php?act=page_add_dsdv">
+          <a href="master.php?act=page_add_dskh">
             <h3 class="card-title">Thêm mới</h3>
           </a>
           <div class="card-tools">
             <form action="" method="POST">
               <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="key" class="form-control float-right" 
-                  placeholder="Search"
+                <input type="text" name="key" class="form-control float-right"
                   value="<?php
-                    if (isset($_POST['search'])) echo $_POST['key']
+                    if(isset($_POST['search'])) echo $_POST['key']
                   ?>"
+                  placeholder="Search"
                 >
   
                 <div class="input-group-append">
@@ -86,11 +86,14 @@
                 <thead>
                   <tr>
                     <th style="width: auto">STT</th>
-                    <th style="width: 250px">Tên</th>
-                    <th style="width: auto">Ảnh</th>
-                    <th style="width: 125px">Loại dịch vụ</th>
-                    <th style="width: 50px">Xếp loại</th>
-                    <th style="width: auto">Giá</th>
+                    <th style="width: auto">Họ và tên</th>
+                    <th style="width: auto">Địa chỉ</th>
+                    <th style="width: auto">Ngày sinh</th>
+                    <th style="width: auto">Số điện thoại</th>
+                    <th style="width: auto">Giới tính</th>
+                    <th style="width: auto">Ảnh đại diện</th>
+                    <th style="width: auto">Email</th>
+                    <th style="width: auto">Mật khẩu</th>
                     <th style="width: auto">Chức năng</th>
                   </tr>
                 </thead>
@@ -98,58 +101,38 @@
                     <?php
                       if(isset($_POST['search'])){
                         $key = $_POST['key'];
-                          $d=0;
-                          $sqlSearch = "SELECT * FROM dichvu
-                            where ten like '%$key%' or mota like '%$key%' or xeploai like '%$key%' or diachi like '%$key%' ";
+                          $sqlSearch = "SELECT * FROM khachhang
+                            WHERE name LIKE '%$key%' or diachi like '%$key%' or sdt like '%$key%'
+                            or email like '%$key%'
+                            ORDER BY id";
+                          $dem=0;
                           $qr = mysqli_query ($conn , $sqlSearch);
                             while ( $row = mysqli_fetch_array($qr)) {
-                              $d++;
+                              $dem++;
                     ?>
                             <tr>
-                              <td><?php echo $d?></td>
-                              <td><?php echo $row['ten']?></td>
+                              <td><?php echo $dem?></td>
+                              <td><?php echo $row['name']?></td>
+                              <td><?php echo $row['diachi']?></td>
+                              <td><?php echo date("d-m-Y", strtotime($row['ngaysinh']));?></td>
+                              <td><?php echo $row['sdt']?></td>
+                              <td><?php if($row['gioitinh'] == 0) echo "Nữ"; else echo "Nam";?></td>
                               <td align='center'>
-                                <img src="../dashboard/image_dichvu/<?php echo $row['anh']?>" alt="<?php echo $row['anh']?>" width="120px" height="80px">
+                                <img src="../dashboard/img_staff/<?php echo $row['avatar']?>" alt="<?php echo $row['avatar']?>" width="100px" height="100px">
                               </td>
-                              
-                              <td><?php 
-                                $sqltam="SELECT * from loai_dichvu where id= '".$row['id_loai']."' ";
-                                $resulttam = mysqli_query ($conn , $sqltam);
-
-                                if( mysqli_num_rows ( $resulttam ) !=0){
-                                  while ( $rowtam = mysqli_fetch_array($resulttam)) {
-                                    echo $rowtam['tenloai'] ."";
-                                  }
-                                }
-                              ?></td>
-                              <td><?php echo $row['xeploai'];?></td>
-                              <td><?php 
-                                $sqltam="SELECT * from gia where id_dichvu= '".$row['id']."' ";
-                                $resulttam = mysqli_query ($conn , $sqltam);
-
-                                if( mysqli_num_rows ( $resulttam ) !=0){
-                                  echo "<div class='row'>";
-                                  while ( $rowtam = mysqli_fetch_array($resulttam)) {
-                                    if ($rowtam['loaive'] === '1')
-                                      echo "Người lớn: &nbsp; ";
-                                    else 
-                                      echo "Trẻ nhỏ: &emsp; &nbsp;";
-                                    echo $rowtam['giatien'] ." VND<br>";
-                                  }
-                                  echo "</div>";
-                                }
-                              ?></td>
+                              <td><?php echo $row['email']?></td>
+                              <td><?php custom_echo($row['matkhau'], 10);?></td>
                               <td>
                                 <div class="btn-group">
                                   <abbr title="Sửa dữ liệu">
-                                    <a href="master.php?act=page_edit_dsdv&id_nv=<?php echo $row['id']?>">
+                                    <a href="master.php?act=page_edit_dskh&id_nv=<?php echo $row['id']?>">
                                       <button type="button" class="btn btn-default btn-sm mr-2">
                                         <i class="nav-icon fas fa-edit"></i>
                                       </button>
                                     </a>
                                   </abbr>
                                   <abbr title="Xóa dữ liệu">
-                                    <a onclick="return xoaNhanVien();" href="Dichvu/delete.php?id_nv=<?php echo $row['id']?>">
+                                    <a onclick="return xoaNhanVien();" href="Customer/delete.php?id_nv=<?php echo $row['id']?>">
                                       <button type="button" class="btn btn-default btn-sm">
                                         <i class="fas fa-trash-alt"></i>
                                       </button>
@@ -164,56 +147,34 @@
                       else{
                     ?>
                     <?php
-                      $d=0;
+                    $dem=0;
                       if( mysqli_num_rows ( $dsnv ) !=0){
                         while ( $row = mysqli_fetch_array($dsnv)) {
-                          $d++;
+                          $dem++;
                     ?>
                       <tr>
-                        <td><?php echo $d?></td>
-                        <td><?php echo $row['ten']?></td>
+                        <td><?php echo $dem?></td>
+                        <td><?php echo $row['name']?></td>
+                        <td><?php echo $row['diachi']?></td>
+                        <td><?php echo date("d-m-Y", strtotime($row['ngaysinh']));?></td>
+                        <td><?php echo $row['sdt']?></td>
+                        <td><?php if($row['gioitinh'] == 0) echo "Nữ"; else echo "Nam";?></td>
                         <td align='center'>
-                          <img src="../dashboard/image_dichvu/<?php echo $row['anh']?>" alt="<?php echo $row['anh']?>" width="120px" height="80px">
+                          <img src="../dashboard/img_staff/<?php echo $row['avatar']?>" alt="<?php echo $row['avatar']?>" width="100px" height="100px">
                         </td>
-                        
-                        <td><?php 
-                          $sqltam="SELECT * from loai_dichvu where id= '".$row['id_loai']."' ";
-                          $resulttam = mysqli_query ($conn , $sqltam);
-
-                          if( mysqli_num_rows ( $resulttam ) !=0){
-                            while ( $rowtam = mysqli_fetch_array($resulttam)) {
-                              echo $rowtam['tenloai'] ."";
-                            }
-                          }
-                        ?></td>
-                        <td><?php echo $row['xeploai'];?></td>
-                        <td><?php 
-                          $sqltam="SELECT * from gia where id_dichvu= '".$row['id']."' ";
-                          $resulttam = mysqli_query ($conn , $sqltam);
-
-                          if( mysqli_num_rows ( $resulttam ) !=0){
-                            echo "<div class='row'>";
-                            while ( $rowtam = mysqli_fetch_array($resulttam)) {
-                              if ($rowtam['loaive'] === '1')
-                                echo "Người lớn: &nbsp; ";
-                              else 
-                                echo "Trẻ nhỏ: &emsp; &nbsp;";
-                              echo $rowtam['giatien'] ." VND<br>";
-                            }
-                            echo "</div>";
-                          }
-                        ?></td>
+                        <td><?php echo $row['email']?></td>
+                        <td><?php custom_echo($row['matkhau'], 10);?></td>
                         <td>
                           <div class="btn-group">
                             <abbr title="Sửa dữ liệu">
-                              <a href="master.php?act=page_edit_dsdv&id_nv=<?php echo $row['id']?>">
+                              <a href="master.php?act=page_edit_dskh&id_nv=<?php echo $row['id']?>">
                                 <button type="button" class="btn btn-default btn-sm mr-2">
                                   <i class="nav-icon fas fa-edit"></i>
                                 </button>
                               </a>
                             </abbr>
                             <abbr title="Xóa dữ liệu">
-                              <a onclick="return xoaNhanVien();" href="Dichvu/delete.php?id_nv=<?php echo $row['id']?>">
+                              <a onclick="return xoaNhanVien();" href="Customer/delete.php?id_nv=<?php echo $row['id']?>">
                                 <button type="button" class="btn btn-default btn-sm">
                                   <i class="fas fa-trash-alt"></i>
                                 </button>

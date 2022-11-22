@@ -103,11 +103,11 @@
             <!-- Blog list Start -->
             <div class="col-lg-12">
                 <div class="blog-item mb-5">
-                    <div class="row g-0 bg-light overflow-hidden">
+                    <div class="row  ">
                         <div class="col-12 col-sm-5 h-100">
                             <img class="img-fluid mb-4" src="./images/<?= $row_chitiet['anh']; ?>" alt="" >
                         </div>
-                        <div class="col-12 col-sm-7 h-100 d-flex flex-column justify-content-center">
+                        <div class="col-12 col-sm-7  d-flex flex-column justify-content-center">
                             <div class="p-4">
                                 <div class="d-flex mb-3">
                                     <small class="me-3"><i class="bi bi-bookmarks me-2"></i>Web Design</small>

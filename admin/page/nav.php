@@ -137,12 +137,37 @@
                     </ul>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="master.php?act=page_dskh" class="nav-link">
+                            <a href="master.php?act=page_dscart" class="nav-link">
                                 <i class="fas fa-arrow-right nav-icon ml-3"></i>
                                 <p>Giỏ hàng</p>
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-credit-card nav-icon ml-2"></i>
+                        <p>
+                            Hóa đơn
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="master.php?act=page_dsbill" class="nav-link">
+                                <i class="fas fa-arrow-right nav-icon ml-3"></i>
+                                <p>Thông tin</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="master.php?act=page_dskh" class="nav-link">
+                                <i class="fas fa-arrow-right nav-icon ml-3"></i>
+                                <p>Giỏ hàng</p>
+                            </a>
+                        </li>
+                    </ul> -->
                 </li>
               <!-- <li class="nav-item">
                 <a href="pages/layout/top-nav.html" class="nav-link">

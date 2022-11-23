@@ -107,6 +107,7 @@
                             ORDER BY id";
                           $dem=0;
                           $qr = mysqli_query ($conn , $sqlSearch);
+                          if(mysqli_num_rows($qr)!=0){
                             while ( $row = mysqli_fetch_array($qr)) {
                               $dem++;
                     ?>
@@ -140,7 +141,8 @@
                               </td>
                             </tr>
                     <?php
-                        }
+                          }
+                        } else echo "<tr><td colspan='8' align='center'><label>Không tìm thấy thông tin</label><td><tr>";
                       }
                       else{
                     ?>

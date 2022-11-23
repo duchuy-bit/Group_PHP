@@ -57,7 +57,7 @@
                 <div class="blog-item mb-5">
                     <div class="g-0 bg-light overflow-hidden">
                         <div class="h-100">
-                            <img class="img-fluid mb-4" src="./images/<?= $row_chitiet['anh']; ?>" alt="" >
+                            <img class="img-fluid mb-4" src="./dashboard/image_dichvu/<?= $row_chitiet['anh']; ?>" alt="" >
                         </div>
                         <div class="h-100 d-flex flex-column justify-content-center px-5">
                             <div class="p-5">

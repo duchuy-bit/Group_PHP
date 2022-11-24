@@ -34,8 +34,64 @@ include "./user/header.php"
 <!-- Navbar End -->
 
 <!-- Hero Start -->
+<div class="thongtin py-5" style="text-align: center">
+    <h2 style="color:#7AB730">Thông tin cá nhân của từng thành viên</h2>
+</div>
+<div class="container">
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5 pb-3">
+            <div class=" col-md-6 col-sm-12 pb-1">
+                <div class=" align-items-center bg-light mb-4">
+                    <div class="d-flex">
+                        <img src=" ./images/pic1.jpg" alt="" srcset="" style="width:150px;height: 170px;">
+                        <h3 class="font-weight-semi-bold pt-4 ps-4" style="margin-top: 50px;">Nguyễn Đức Huy</h3>
+                    </div>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <!-- <input type="submit" name="btcn" value="Bài tập cá nhân"> -->
+                </div>
+            </div>
+            <div class=" col-md-6 col-sm-12 pb-1">
+                <div class=" align-items-center bg-light mb-4">
+                    <div class="d-flex">
+                        <img src="./images/vhuy.jpg" alt="" srcset="" style="width:150px;height: 170px;">
+                        <h3 class="font-weight-semi-bold pt-4 ps-4" style="margin-top: 50px;">Trần Văn Huy</h3>
+                    </div>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <!-- <input type="submit" name="btcn" value="Bài tập cá nhân"> -->
+                </div>
+            </div>
+            <div class=" col-md-6 col-sm-12 pb-1">
+                <div class=" align-items-center bg-light mb-4">
+                    <div class="d-flex">
+                        <img src="./images/tam.jpg" alt="" srcset="" style="width:150px;height: 170px;">
+                        <h3 class="font-weight-semi-bold pt-4 ps-4" style="margin-top: 50px;">Lê Thị Thanh Tâm</h3>
+                    </div>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <!-- <input type="submit" name="btcn" value="Bài tập cá nhân"> -->
+                </div>
+            </div>
+            <div class=" col-md-6 col-sm-12 pb-1">
+                <div class=" align-items-center bg-light mb-4">
+                    <div class="d-flex">
+                        <img src="./images/quynh.jpg" alt="" srcset="" style="width:150px;height: 170px;">
+                        <h3 class="font-weight-semi-bold pt-4 ps-4" style="margin-top: 50px;">Trương Thị Diễm Quỳnh</h3>
+                    </div>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <!-- <button><a href="../Group_PHP/baitap/baicanhan/quynh/quynh.php">Bài tập cá nhân</a></button> -->
+                </div>
+            </div>
+            <a href="baitap.php" class="nav-item nav-link">Bài tập</a>
+            <a href="thongtin.php" class="nav-item nav-link active ">Thông tin</a>
+            <a href="#" class="nav-item nav-link">Admin</a>
+            <a href="giohang.php" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5"><i class="bi bi-cart4" style="font-size:18px;"></i></a>
+        </div>
+    </div>
 
-    alo alo
+</div>
 <!-- Hero End -->
 
 <?php

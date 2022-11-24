@@ -35,9 +35,53 @@
         </div>
     </nav>
     <!-- Navbar End -->
-
+    <div class="px-5 d-flex justify-content-center" style="margin-top: 50px; align-items: center; justify-content: center;">
+        <h2 >Bài tập PHP</h2>
+    </div>
     <!-- Hero Start -->
-    alaolo
+    <div class="px-5 py-5" style="margin-left: 150px;margin-right: 150px;">
+        <div class="row bg-light px-5 py-3">
+            <div class="col-xs-12 col-md-4 d-flex justify-content-center">
+                <div style="align-items: center;">
+                    <h5>FORM PHP</h5>
+                    <a href="#" style="font-size: 20px;"> - Bài 1 - </a></br>
+                    <a href="#" style="font-size: 20px;"> - Bài 2 - </a></br>
+                    <a href="#" style="font-size: 20px;"> - Bài 3 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 4 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 5 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 6 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 7 - </a><br>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-4 d-flex justify-content-center">
+            <div style="align-items: center;">
+                    <h5>ARRAY PHP</h5>
+                    <a href="#" style="font-size: 20px;"> - Bài 1 - </a></br>
+                    <a href="#" style="font-size: 20px;"> - Bài 2 - </a></br>
+                    <a href="#" style="font-size: 20px;"> - Bài 3 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 4 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 5 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 6 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 7 - </a><br>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-4 d-flex justify-content-center">
+            <div style="align-items: center;">
+                    <h5>SQL + PHP</h5>
+                    <a href="#" style="font-size: 20px;"> - Bài 1 - </a></br>
+                    <a href="#" style="font-size: 20px;"> - Bài 2 - </a></br>
+                    <a href="#" style="font-size: 20px;"> - Bài 3 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 4 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 5 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 6 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 7 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 8 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 9 - </a><br>
+                    <a href="#" style="font-size: 20px;"> - Bài 10 - </a><br>
+                </div>
+            </div>
+        </div>
+    </div>  
     <!-- Hero End -->
 
 <?php

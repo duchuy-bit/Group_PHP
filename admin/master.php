@@ -58,6 +58,42 @@
             case 'page_edit_dsdv':
                 include "DichVu/edit.php";
                 break;
+            
+            case 'page_dskh':
+                include "Customer/index.php";
+                break;
+
+            case 'page_add_dskh':
+                include "Customer/add.php";
+                break;
+
+            case 'page_edit_dskh':
+                include "Customer/edit.php";
+                break;
+
+            case 'page_dscart':
+                include "Cart/index.php";
+                break;
+
+            case 'page_add_dscart':
+                include "Cart/add.php";
+                break;
+
+            case 'page_edit_dscart':
+                include "Cart/edit.php";
+                break;
+
+            case 'page_dsbill':
+                include "Bill/index.php";
+                break;
+    
+            // case 'page_add_dscart':
+            //     include "Cart/add.php";
+            //     break;
+    
+            case 'page_edit_dsbill':
+                include "Bill/edit.php";
+                break;
 
             default:
                 include "../admin/page/home.php";

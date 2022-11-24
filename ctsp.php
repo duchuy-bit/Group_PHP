@@ -17,11 +17,14 @@
     }
     $sql_chitiet = mysqli_query($conn,"SELECT * FROM `dichvu` WHERE id='$id'");
 
+    
+
     if (isset($_POST['addtocart']))
     {
         $sqlAddtoCart = "SELECT * FROM gia where `id_dichvu`=$id";
         $result = mysqli_query($conn,$sqlAddtoCart);
         $id_gia="";
+        $id_giaChild='';
         $dem=0;
         if (mysqli_num_rows($result) != 0){
             while ( $rowtam = mysqli_fetch_array($result)){
@@ -31,13 +34,15 @@
                     $id_gia= $rowtam['id'];
                     // $giatien = $row
                 }
-            }
-            if ($dem === 0){
-                while ( $rowtam = mysqli_fetch_array($result)){
-                    $id_gia= $rowtam['id'];
-                    break;
+                if ($rowtam['loaive'] ==='0')
+                {
+                    // $dem++;
+                    echo $rowtam['id'];
+                    $id_giaChild= $rowtam['id'];
+                    // $giatien = $row
                 }
             }
+            
         }
 
         //____Check Tồn tại sp trong giohangf
@@ -48,8 +53,18 @@
             echo "<script type='text/javascript'>alert('Dịch vụ đã có sẵn trong giỏ hàng');</script>";
         }else{
             $dateNow = date("Y/m/d");
+
+            if ($id_giaChild !==''){
+                $sqlAddtoCart = "INSERT INTO `giohang`(`id_khachhang`, `id_gia`, `sl`, `ngaythem`) 
+                VALUES ('$id_kh','$id_giaChild','0','$dateNow')";
+                mysqli_query($conn,$sqlAddtoCart);
+            }
+            
+
+            
             $sqlAddtoCart = "INSERT INTO `giohang`(`id_khachhang`, `id_gia`, `sl`, `ngaythem`) 
-                VALUES ('$id_kh','$id_gia','1','$dateNow')";
+            VALUES ('$id_kh','$id_gia','1','$dateNow')";
+
             if (mysqli_query($conn,$sqlAddtoCart)){
                 echo "<script type='text/javascript'>alert('Thêm giỏ hàng thành công');</script>";
             }else {
@@ -103,11 +118,11 @@
             <!-- Blog list Start -->
             <div class="col-lg-12">
                 <div class="blog-item mb-5">
-                    <div class="row g-0 bg-light overflow-hidden">
+                    <div class="row  ">
                         <div class="col-12 col-sm-5 h-100">
-                            <img class="img-fluid mb-4" src="./images/<?= $row_chitiet['anh']; ?>" alt="" >
+                            <img class="img-fluid mb-4" src="./dashboard/image_dichvu/<?= $row_chitiet['anh']; ?>" alt="" >
                         </div>
-                        <div class="col-12 col-sm-7 h-100 d-flex flex-column justify-content-center">
+                        <div class="col-12 col-sm-7  d-flex flex-column justify-content-center">
                             <div class="p-4">
                                 <div class="d-flex mb-3">
                                     <small class="me-3"><i class="bi bi-bookmarks me-2"></i>Web Design</small>

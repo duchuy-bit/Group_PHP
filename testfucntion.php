@@ -1,5 +1,5 @@
 <form method="post">
-    <input type="submit" name="test" id="test" value="RUN" /><br/>
+      <input type="submit" name="test" id="test" value="RUN" /><br/>
 </form>
 
 <?php

@@ -29,9 +29,9 @@
     
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
-        <a href="index.html" class="navbar-brand ms-lg-5">
+        <a href="index.php" class="navbar-brand ms-lg-5">
             <h1 class="m-0 text-uppercase text-dark">
-                <img src="./images/logo_vinpearl.jpg" width="60" height="60"/>
+                <img src="./dashboard/image_dichvu/logo_vinpearl.jpg" width="60" height="60"/>
                 Vinpearl
             </h1>
         </a>
@@ -73,7 +73,7 @@
                     <div class="pb-5 col-md-3 col-sm-6 my-md-0">
                         <div class="product-item position-relative bg-light d-flex flex-column text-center"
                         style="height: 320px;width: 270px;">
-                            <img class="img-fluid mb-4" src="./images/<?= $row['anh']; ?>" alt="">
+                            <img class="img-fluid mb-4" src="./dashboard/image_dichvu/<?= $row['anh']; ?>" alt="">
                             <h6 class="text-uppercase"><?= $row['ten']; ?></h6>
                             <h6><i></i><b style="color:orange;"><?php 
                                         // echo (int)$row['xeploai'];

@@ -153,7 +153,7 @@
                     <div class="pb-5 col-md-3 col-sm-6 my-md-0">
                         <div class="product-item position-relative bg-light d-flex flex-column text-center"
                         style="height: 320px;width: 270px;">
-                            <img class="img-fluid mb-4" src="./images/<?= $row['anh']; ?>" alt="">
+                            <img class="img-fluid mb-4" src="./dashboard/image_dichvu/<?php echo $row['anh']; ?>" alt="">
                             <h6 class="text-uppercase"><?= $row['ten']; ?></h6>
                             <h6><i></i><b style="color:orange;"><?php 
                                         // echo (int)$row['xeploai'];

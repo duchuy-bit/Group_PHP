@@ -1,6 +1,14 @@
 <?php
 include "./user/header.php";
-$id_customer = '1';
+
+if (!isset($_COOKIE['type'])){
+    echo "<script type='text/javascript'>alert('Vui lòng đăng nhập')</script>";
+            ?>
+                <script>window.location.href = 'login.php';</script>
+            <?php
+}
+
+$id_customer = $_COOKIE['login'];
 
     // function number_format($a){
     //     $dem = 0;
@@ -43,7 +51,16 @@ $id_customer = '1';
             </div>
             <a href="baitap.php" class="nav-item nav-link">Bài tập</a>
             <a href="thongtin.php" class="nav-item nav-link">Thông tin</a>
-            <a href="#" class="nav-item nav-link">Admin</a>
+            <?php
+                    if( isset($_COOKIE["type"]))
+                    {
+                        if ($_COOKIE["type"] === 'admin'){       
+                ?>
+                    <a href="./admin/master.php" class="nav-item nav-link">Admin</a>
+                <?php
+                        }
+                    }
+                ?>
 
             <a href="giohang.php" class="active nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5"><i class="bi bi-cart4" style="font-size:18px;"></i></a>
         </div>
@@ -76,7 +93,9 @@ $id_customer = '1';
                                 <!-- </tr> -->
                                 <?php
                                     $subTotal=0;
+                                    
                                     include "./user/connect.php";
+
                                     $mysql= "SELECT * 
                                     FROM giohang 
                                         INNER JOIN gia on giohang.id_gia = gia.id

@@ -3,11 +3,12 @@
 ?>
 
 <?php
-    $severname="localhost";
-    $username="root";
-    $password="";
-    $dbname="tourbooking";
-    $conn=mysqli_connect($severname,$username,$password,$dbname);
+    // $severname="localhost";
+    // $username="root";
+    // $password="";
+    // $dbname="tourbooking";
+    // $conn=mysqli_connect($severname,$username,$password,$dbname);
+    include "./user/connect.php";
 
     if(isset($_GET['trang'])){
         $page=$_GET['trang'];
@@ -52,7 +53,16 @@
                 </div>
                 <a href="baitap.php" class="nav-item nav-link">Bài tập</a>
                 <a href="thongtin.php" class="nav-item nav-link">Thông tin</a>
-                <a href="#" class="nav-item nav-link">Admin</a>
+                <?php
+                    if( isset($_COOKIE["type"]))
+                    {
+                        if ($_COOKIE["type"] === 'admin'){       
+                ?>
+                    <a href="./admin/master.php" class="nav-item nav-link">Admin</a>
+                <?php
+                        }
+                    }
+                ?>
                 
                 <a href="giohang.php" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5"><i class="bi bi-cart4"style="font-size:18px;"></i></a>
             </div>
@@ -73,14 +83,16 @@
                     <div class="pb-5 col-md-3 col-sm-6 my-md-0">
                         <div class="product-item position-relative bg-light d-flex flex-column text-center"
                         style="height: 320px;width: 270px;">
-                            <img class="img-fluid mb-4" src="./dashboard/image_dichvu/<?= $row['anh']; ?>" alt="">
+                            <img class="img-fluid mb-4" src="./dashboard/image_dichvu/<?= $row['anh']; ?>" alt=""
+                            style="width: 200px; height: 150px;">
                             <h6 class="text-uppercase"><?= $row['ten']; ?></h6>
                             <h6><i></i><b style="color:orange;"><?php 
                                         // echo (int)$row['xeploai'];
-                                        for ($i=0;$i< (int)$row['xeploai'];$i++) echo "<i class='bi bi-star-fill'></i>";
-                                        if (($row['xeploai'] - (int)$row['xeploai'] >= 0.3 ) )echo "<i class='bi bi-star-half'></i>";
-                                        else  echo "<i class='bi bi-star'></i>";
-                                        for ($i=  (int)$row['xeploai'] + 1;$i< 5;$i++) echo "<i class='bi bi-star'></i>";
+                                        rating($row['xeploai']);
+                                        // for ($i=0;$i< (int)$row['xeploai'];$i++) echo "<i class='bi bi-star-fill'></i>";
+                                        // if (($row['xeploai'] - (int)$row['xeploai'] >= 0.3 ) )echo "<i class='bi bi-star-half'></i>";
+                                        // else  echo "<i class='bi bi-star'></i>";
+                                        // for ($i=  (int)$row['xeploai'] + 1;$i< 5;$i++) echo "<i class='bi bi-star'></i>";
                                     ?></b></h6>
                             <div class="btn-action d-flex justify-content-center">
                                 <a class="btn btn-primary py-2 px-3" href=""><i class="bi bi-cart"></i></a>

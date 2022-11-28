@@ -3,11 +3,12 @@
 ?>
 
 <?php
-    $severname="localhost";
-    $username="root";
-    $password="";
-    $dbname="tourbooking";
-    $conn=mysqli_connect($severname,$username,$password,$dbname);
+    // $severname="localhost";
+    // $username="root";
+    // $password="";
+    // $dbname="tourbooking";
+    // $conn=mysqli_connect($severname,$username,$password,$dbname);
+    include "./user/connect.php";
 
     $sql_chitiet = mysqli_query($conn,"SELECT * FROM `dichvu` WHERE id_loai='4'");
 ?>
@@ -38,7 +39,16 @@
                 </div>
                 <a href="baitap.php" class="nav-item nav-link">Bài tập</a>
                 <a href="thongtin.php" class="nav-item nav-link">Thông tin</a>
-                <a href="#" class="nav-item nav-link">Admin</a>
+                <?php
+                    if( isset($_COOKIE["type"]))
+                    {
+                        if ($_COOKIE["type"] === 'admin'){       
+                ?>
+                    <a href="./admin/master.php" class="nav-item nav-link">Admin</a>
+                <?php
+                        }
+                    }
+                ?>
                 
                 <a href="giohang.php" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5"><i class="bi bi-cart4"style="font-size:18px;"></i></a>
             </div>
@@ -68,13 +78,14 @@
                                 <h5 class="text-uppercase mb-3"><?= $row_chitiet['ten']; ?></h5>
                                 <h6><i>Xếp loại: </i><b style="color:orange ;"><?php 
                                     // echo $row_chitiet['xeploai'];
-                                        for ($i=0;$i< (int)$row_chitiet['xeploai'];$i++) echo "<i class='bi bi-star-fill'></i>";
-                                            if (($row_chitiet['xeploai'] - (int)$row_chitiet['xeploai'] >= 0.3 ) )
-                                                echo "<i class='bi bi-star-half'></i>";
-                                            else if(($row_chitiet['xeploai'] - (int)$row_chitiet['xeploai'] != 0.0 )) 
-                                                echo "<i class='bi bi-star'></i>";
-                                            for ($i=  (int)$row_chitiet['xeploai'] + 1; $i< 5;$i++) 
-                                                echo "<i class='bi bi-star'></i>";
+                                    rating($row_chitiet['xeploai']);
+                                        // for ($i=0;$i< (int)$row_chitiet['xeploai'];$i++) echo "<i class='bi bi-star-fill'></i>";
+                                        //     if (($row_chitiet['xeploai'] - (int)$row_chitiet['xeploai'] >= 0.3 ) )
+                                        //         echo "<i class='bi bi-star-half'></i>";
+                                        //     else if(($row_chitiet['xeploai'] - (int)$row_chitiet['xeploai'] != 0.0 )) 
+                                        //         echo "<i class='bi bi-star'></i>";
+                                        //     for ($i=  (int)$row_chitiet['xeploai'] + 1; $i< 5;$i++) 
+                                        //         echo "<i class='bi bi-star'></i>";
                                     ?></b></h6>
                                 <p><b>Mô tả: </b><?= $row_chitiet['mota']; ?></p>
                                 <table colspan="2">

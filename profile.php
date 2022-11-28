@@ -1,11 +1,6 @@
 <?php
     include "./user/header.php";
 
-    // $severname="localhost";
-    // $username="root";
-    // $password="";
-    // $dbname="tourbooking";
-    // $conn=mysqli_connect($severname,$username,$password,$dbname);
     include "./user/connect.php";
 
     $id_kh= '';
@@ -20,72 +15,70 @@
     }else {
         $id = '';
     }
-    $sql_chitiet = mysqli_query($conn,"SELECT * FROM `dichvu` WHERE id='$id'");
+    $sql_chitiet = mysqli_query($conn,"SELECT * FROM `dichvu` WHERE id='1'");
 
     
 
-    if (isset($_POST['addtocart']))
-    {
-        $sqlAddtoCart = "SELECT * FROM gia where `id_dichvu`=$id";
-        $result = mysqli_query($conn,$sqlAddtoCart);
-        $id_gia="";
-        $id_giaChild='';
-        $dem=0;
-        if (mysqli_num_rows($result) != 0){
-            while ( $rowtam = mysqli_fetch_array($result)){
-                if ($rowtam['loaive'] ==='1')
-                {
-                    $dem++;
-                    $id_gia= $rowtam['id'];
-                    // $giatien = $row
-                }
-                if ($rowtam['loaive'] ==='0')
-                {
-                    // $dem++;
-                    // echo $rowtam['id'];
-                    $id_giaChild= $rowtam['id'];
-                    // $giatien = $row
-                }
-            }
+    // if (isset($_POST['addtocart']))
+    // {
+    //     $sqlAddtoCart = "SELECT * FROM gia where `id_dichvu`=$id";
+    //     $result = mysqli_query($conn,$sqlAddtoCart);
+    //     $id_gia="";
+    //     $id_giaChild='';
+    //     $dem=0;
+    //     if (mysqli_num_rows($result) != 0){
+    //         while ( $rowtam = mysqli_fetch_array($result)){
+    //             if ($rowtam['loaive'] ==='1')
+    //             {
+    //                 $dem++;
+    //                 $id_gia= $rowtam['id'];
+    //                 // $giatien = $row
+    //             }
+    //             if ($rowtam['loaive'] ==='0')
+    //             {
+    //                 // $dem++;
+    //                 // echo $rowtam['id'];
+    //                 $id_giaChild= $rowtam['id'];
+    //                 // $giatien = $row
+    //             }
+    //         }
             
-        }
+    //     }
 
-        if ($id_kh !==''){
-            //____Check Tồn tại sp trong giohangf
-            $result = mysqli_query($conn,"SELECT * 
-                FROM gia inner join giohang on gia.id = giohang.id_gia
-                where giohang.id_khachhang = '$id_kh' and giohang.id_gia = '$id_gia'");
-            if (mysqli_num_rows($result)!=0){
-                echo "<script type='text/javascript'>alert('Dịch vụ đã có sẵn trong giỏ hàng');</script>";
-            }else{
-                $dateNow = date("Y/m/d");
+    //     if ($id_kh !==''){
+    //         //____Check Tồn tại sp trong giohangf
+    //         $result = mysqli_query($conn,"SELECT * 
+    //             FROM gia inner join giohang on gia.id = giohang.id_gia
+    //             where giohang.id_khachhang = '$id_kh' and giohang.id_gia = '$id_gia'");
+    //         if (mysqli_num_rows($result)!=0){
+    //             echo "<script type='text/javascript'>alert('Dịch vụ đã có sẵn trong giỏ hàng');</script>";
+    //         }else{
+    //             $dateNow = date("Y/m/d");
 
-                if ($id_giaChild !==''){
-                    $sqlAddtoCart = "INSERT INTO `giohang`(`id_khachhang`, `id_gia`, `sl`, `ngaythem`) 
-                    VALUES ('$id_kh','$id_giaChild','0','$dateNow')";
-                    mysqli_query($conn,$sqlAddtoCart);
-                }
+    //             if ($id_giaChild !==''){
+    //                 $sqlAddtoCart = "INSERT INTO `giohang`(`id_khachhang`, `id_gia`, `sl`, `ngaythem`) 
+    //                 VALUES ('$id_kh','$id_giaChild','0','$dateNow')";
+    //                 mysqli_query($conn,$sqlAddtoCart);
+    //             }
                 
 
                 
-                $sqlAddtoCart = "INSERT INTO `giohang`(`id_khachhang`, `id_gia`, `sl`, `ngaythem`) 
-                VALUES ('$id_kh','$id_gia','1','$dateNow')";
+    //             $sqlAddtoCart = "INSERT INTO `giohang`(`id_khachhang`, `id_gia`, `sl`, `ngaythem`) 
+    //             VALUES ('$id_kh','$id_gia','1','$dateNow')";
 
-                if (mysqli_query($conn,$sqlAddtoCart)){
-                    echo "<script type='text/javascript'>alert('Thêm giỏ hàng thành công');</script>";
-                }else {
-                    echo "<script type='text/javascript'>alert('Thêm giỏ hàng không thành công !!!');</script>";
-                }
-            }
-        }
-        else {
-            echo "<script type='text/javascript'>alert('Vui lòng đăng nhập')</script>";
-            ?>
-                <script>window.location.href = 'login.php';</script>
-            <?php
-        }
+    //             if (mysqli_query($conn,$sqlAddtoCart)){
+    //                 echo "<script type='text/javascript'>alert('Thêm giỏ hàng thành công');</script>";
+    //             }else {
+    //                 echo "<script type='text/javascript'>alert('Thêm giỏ hàng không thành công !!!');</script>";
+    //             }
+    //         }
+    //     }
+    //     else {
+    //         echo "<script type='text/javascript'>alert('Vui lòng đăng nhập')</script>";
+
+    //     }
         
-    }
+    // }
 ?>
 
     

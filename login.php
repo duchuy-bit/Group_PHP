@@ -1,3 +1,91 @@
+<?php
+    // $severname="localhost";
+    // $username="root";
+    // $password="";
+    // $dbname="tourbooking";
+    // $conn=mysqli_connect($severname,$username,$password,$dbname);
+    include "./user/connect.php";
+
+    if (isset($_POST['dki'])) {
+        $name = $_POST['name'];
+		$sdt = $_POST['sdt'];
+        $email = $_POST['email'];
+        $matkhau  = $_POST['matkhau'];
+        $matkhau = password_hash($_POST['matkhau'], PASSWORD_DEFAULT);
+
+        $check = true;
+        $result = mysqli_query ($conn , "SELECT * from khachhang where email = '$email'");
+        if( mysqli_num_rows ($result) === 0){
+            // while ( $row = mysqli_fetch_array ($result)) {
+                $mysql = "INSERT INTO `khachhang`(`id`, `name`, `sdt`, `diachi`, `ngaysinh`, `gioitinh`, `email`, `matkhau`, `avatar`) 
+                    VALUES (null,'".$name."','".$sdt."','' , '1000/01/01' ,'1','".$email."','".$matkhau."','') " ;
+                
+                mysqli_query ($conn , $mysql );
+                echo "<script type='text/javascript'>alert('Đăng ký thành công');</script>";
+            // }
+        }else{
+            echo "<script type='text/javascript'>alert('Email đã tồn tại . . .');</script>";
+        }
+
+        
+    }
+
+    
+
+    
+
+    if (isset($_POST['dnhap'])) { 
+        $email = $_POST['email'];
+        $matkhau = $_POST['matkhau'];
+
+        $d=false;
+
+        $sql = "SELECT * FROM `nhanvien`";
+        $result = mysqli_query ($conn , $sql);
+        if( mysqli_num_rows ($result) !=0){
+            while ( $row = mysqli_fetch_array ($result)) {
+                if((isset($_POST['email'])) && $email === $row['email']){
+                    if((isset($_POST['matkhau'])) && password_verify($matkhau, $row['matkhau']) == true  ) {
+                        $d= true;
+
+                        setcookie( 'type' , 'admin' , time () + (604800) , "/");
+                        setcookie( 'login' , $row['idnv'] , time () + (604800) , "/");
+                        ?>
+                            <script>window.location.href = 'index.php';</script>
+                        <?php
+                        // <!-- header("Location: ../Group_PHP/index.php"); -->
+                    }
+                }    
+            }
+        }     
+
+        $sql = "SELECT * FROM `khachhang`";
+        $result = mysqli_query ($conn , $sql);
+        if( mysqli_num_rows ($result) !=0){
+            while ( $row = mysqli_fetch_array($result)) {
+                if((isset($_POST['email'])) && $email===$row['email']){
+                    if((isset($_POST['matkhau'])) && password_verify($matkhau,$row['matkhau']) === true) {
+                        $d= true;
+                        setcookie( 'type' , 'customer' , time () + (604800) , "/");
+                        setcookie( 'login' , $row['id'] , time () + (604800) , "/");
+                        // header("Location: ../Group_PHP/index.php"); 
+                        ?>
+                            <script>window.location.href = 'index.php';</script>
+                        <?php
+                    }
+                }    
+            }
+        } 
+        
+        if ($d=== false ) {
+            echo "<script type='text/javascript'>alert('Vui lòng nhập lại tài khoản . . . ');</script>";
+        }
+    }   
+
+?>
+
+
+
 <head>
     <meta charset="utf-8">
     <title>Vinpearl</title>
@@ -27,41 +115,6 @@
 </head>
 <body>
 
-<?php
-    $severname="localhost";
-    $username="root";
-    $password="";
-    $dbname="tourbooking";
-    $conn=mysqli_connect($severname,$username,$password,$dbname);
-
-    if (isset($_POST['dki'])) {
-        $name = $_POST['name'];
-		$sdt = $_POST['sdt'];
-        $email = $_POST['email'];
-        $matkhau  = $_POST['matkhau'];
-
-        $mysql = "INSERT INTO `khachhang`(`name`, `sdt`, `email`, `matkhau`) VALUES ('".$name."','".$sdt."','".$email."','".$matkhau."') " ;
-        $result = mysqli_query ($conn , $mysql );
-    }
-
-    $sql = "SELECT * FROM `khachhang`";
-    $result = mysqli_query ($conn , $sql);
-
-    if (isset($_POST['dnhap'])) { 
-        $email = $_POST['email'];
-        $matkhau = $_POST['matkhau'];
-
-
-        if( mysqli_num_rows ($result) !=0){
-            while ( $row = mysqli_fetch_row ($result)) {
-                if((isset($_POST['email'])) && $email===$row[6]){
-                    if((isset($_POST['matkhau'])) && $matkhau===$row[7]) header("Location: ../Group_PHP/index.php"); 
-                }    
-            }
-        }       
-    }   
-
-?>
 
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
@@ -72,10 +125,10 @@
 			</div>
 
 			<input type="text" name="name" placeholder="Name" />
-			<input type="phone" name="sdt" placeholder="Phone" />
+			<input type="phone" name="sdt" pattern="[0-9]{10}" placeholder="Phone" />
 			<input type="email" name="email" placeholder="Email" />
 			<input type="password" name="matkhau" placeholder="Password" />
-			<button name="dki">Sign Up</button>
+			<button name="dki">Xác nhận</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
@@ -85,23 +138,23 @@
 			</div>
 			<input type="email" name="email" placeholder="Email" />
 			<input type="password" name="matkhau" placeholder="Password" />
-			<a href="#">Forgot your password?
+			<a href="forgotpassword.php">Quên mật khẩu?
 				
 			</a>
-			<button name="dnhap">Sign In</a></button>
+			<button name="dnhap">Xác nhận</a></button>
 		</form>
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
+				<h1>Chào bạn!</h1>
+				<p>Đăng nhập với tài khoản của bạn để kết nối với chúng tôi</p>
+				<button class="ghost" id="signIn">Đăng nhập</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
+				<h1>Hi, Bro!</h1>
+				<p>Điền đầy đủ thông tin đăng ký và bắt đầu chuyến tham quan nào ...</p>
+				<button class="ghost" id="signUp">Đăng ký</button>
 			</div>
 		</div>
 	</div>

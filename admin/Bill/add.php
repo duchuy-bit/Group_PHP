@@ -131,7 +131,7 @@
                     </div>
                     <div class="form-group">
                         <label>Xếp loại</label>
-                        <input type="text" name="xeploai" class="form-control" style="width: 150px;" required>
+                        <input type="number" name="xeploai" class="form-control" style="width: 150px;" required>
                     </div>
                     <div class="form-group">
                         <label>Giá</label>

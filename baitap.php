@@ -28,7 +28,16 @@
                 </div>
                 <a href="baitap.php" class="nav-item nav-link active ">Bài tập</a>
                 <a href="thongtin.php" class="nav-item nav-link">Thông tin</a>
-                <a href="#" class="nav-item nav-link">Admin</a>
+                <?php
+                    if( isset($_COOKIE["type"]))
+                    {
+                        if ($_COOKIE["type"] === 'admin'){       
+                ?>
+                    <a href="./admin/master.php" class="nav-item nav-link">Admin</a>
+                <?php
+                        }
+                    }
+                ?>
                 
                 <a href="giohang.php" class="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5"><i class="bi bi-cart4"style="font-size:18px;"></i></a>
             </div>

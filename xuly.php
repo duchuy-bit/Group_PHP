@@ -1,8 +1,10 @@
 <?php 
 
-    $id_customer ='1';
+    $id_customer = $_COOKIE['login'] ;
 
     include "./user/connect.php";
+
+    
     if(isset($_GET['xoa'])){
         $id = $_GET['xoa'];
         echo $id;
@@ -59,7 +61,7 @@
         //  print_r($giohang);
         $newsl = $giohang['sl']-1;
         //  print_r($giohang);
-        if($newsl>=1){
+        if($newsl>=0){
             $sql= "UPDATE giohang set sl = '$newsl' where id_khachhang = '$id_customer' and id_gia='$id'";
             $query = mysqli_query($conn, $sql);
             header('Location:giohang.php');
@@ -106,12 +108,13 @@
         if (mysqli_num_rows($query)!=0){
             while ( $row = mysqli_fetch_array($query)){
                 // mysqli_fetch_array(
-                    mysqli_query(
-                        $conn,
-                        "INSERT INTO `cthd`(`id_hd`, `id_gia`, `sl`, `giatien`) 
-                            VALUES ('$id_bill','".$row['id_gia']."','".$row['sl']."','".$row['giatien']."')"
-                    );
-                // );
+                    if ($row['sl'] !== '0' ){
+                        mysqli_query(
+                            $conn,
+                            "INSERT INTO `cthd`(`id_hd`, `id_gia`, `sl`, `giatien`) 
+                                VALUES ('$id_bill','".$row['id_gia']."','".$row['sl']."','".$row['giatien']."')"
+                        );
+                    }
             }
         }
         mysqli_query($conn,"DELETE FROM `giohang` WHERE id_khachhang=$id_customer");

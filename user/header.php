@@ -42,6 +42,21 @@
 <?php 
 //-- you can modified it like you want
 
+    function rating($n){
+        $a= (float) $n;
+        $t="";
+        for ($i=0; $i< (int)$a;$i++) echo "<i class='bi bi-star-fill'></i>";
+        $start=0;
+        if (($a - (int)$a) >= 0.3  )
+        {
+            echo "<i class='bi bi-star-half'></i>";
+            $start = (int)$a + 1;
+        }else {
+            $start = (int)$a;
+        }
+        for ($i=$start; $i<5;$i++) echo"<i class='bi bi-star'></i>";
+    }
+
 // echo $width = "<script>var w = window.innerWidth;
 // var h = window.innerHeight;</script><br>";
     // $height = "<script>document.write(window.innerHeight);</script>";
@@ -111,10 +126,40 @@
             <div class="col-xs-12 col-sm-12 text-center col-md-3 py-2">
                 <div class="d-inline-flex align-items-center">
                     <div class="text-start">
-                        <h6 class="text-uppercase mb-1"><a href="login.php">Nguyen Duc Huy</a></h6>
-                        <span style="font-weight: bold;text-decoration:underline;">
-                            <a href="" style="color: grey;"> Đăng xuất</a>
-                        </span>
+                        <?php
+                            include './user/connect.php';
+                            $name = "";
+                            if( isset($_COOKIE["type"])){
+                                if ($_COOKIE["type"] === 'customer'){
+                                    $id = $_COOKIE["login"];
+                                    $result = mysqli_fetch_array(mysqli_query($conn, "SELECT * from khachhang where id = '$id'"));
+                                    $name = $result['name'];
+                                }
+                            }
+
+                            if( isset($_COOKIE["type"])){
+                                if ($_COOKIE["type"] === 'admin'){
+                                    $id = $_COOKIE["login"];
+                                    $result = mysqli_fetch_array(mysqli_query($conn, "SELECT * from nhanvien where idnv = '$id'"));
+                                    $name = $result['ten'];
+                                }
+                            }
+
+                            if ($name === ""){
+                                echo '<br><span style="font-weight: bold;text-decoration:underline;">';
+                                    echo '<a href="login.php" style="color: grey;"> Đăng nhập</a>';
+                                echo '</span>';
+                            }else {
+                                echo '<br><span style="font-weight: bold;">';
+                                    echo '<h6 class="text-uppercase mb-1"><a href="profile.php">'.$name.'</a></h6>';
+                                    echo '<a href="logout.php" style="color: grey;"> Đăng xuất</a>';
+                                echo '</span>';
+                            }
+                        // <h6 class="text-uppercase mb-1"><a href="login.php">Nguyen Duc Huy</a></h6>
+                        // <span style="font-weight: bold;text-decoration:underline;">
+                        //     <a href="" style="color: grey;"> Đăng xuất</a>
+                        // </span>
+                        ?>
                     </div>
                 </div>
             </div>

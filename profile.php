@@ -10,12 +10,12 @@
         }
     }
 
-    if(isset($_GET['id'])){
-        $id = $_GET['id'];
-    }else {
-        $id = '';
-    }
-    $sql_chitiet = mysqli_query($conn,"SELECT * FROM `dichvu` WHERE id='1'");
+    // if(isset($_GET['id'])){
+    //     $id = $_GET['id'];
+    // }else {
+    //     $id = '';
+    // }
+    $sql_chitiet = mysqli_query($conn,"SELECT * FROM khachhang WHERE id= '$id_kh'");
 
     
 
@@ -101,7 +101,7 @@
                     <div class="dropdown-menu m-0">
                         <a href="nghiduong.php" class="dropdown-item">Nghỉ Dưỡng</a>
                         <a href="khampha.php" class="dropdown-item">Khám phá & Hoạt động</a>
-                        <a href="golf.php" class="dropdown-item active ">Golf</a>
+                        <a href="golf.php" class="dropdown-item">Golf</a>
                         <a href="amthuc.php" class="dropdown-item">Ẩm thực</a>
                     </div>
                 </div>
@@ -124,79 +124,112 @@
     </nav>
     <!-- Navbar End -->
 
-
+<style>
+</style>
     <!-- Blog Start -->
     <?php
         while($row_chitiet = mysqli_fetch_array($sql_chitiet)){ 
     ?>
     <div class="container py-5">
         <div class="row g-5">
-            <!-- Blog list Start -->
-            <div class="col-lg-12">
-                <div class="blog-item mb-5">
-                    <div class="row  ">
-                        <div class="col-12 col-sm-5 h-100">
-                            <img class="img-fluid mb-4" src="./dashboard/image_dichvu/<?= $row_chitiet['anh']; ?>" alt="" >
-                        </div>
-                        <div class="col-12 col-sm-7  d-flex flex-column justify-content-center">
-                            <div class="p-4">
-                                <div class="d-flex mb-3">
-                                    <small class="me-3"><i class="bi bi-bookmarks me-2"></i>Web Design</small>
-                                    <small><i class="bi bi-calendar-date me-2"></i>04 Dec, 2022</small>
-                                </div>
-                                <h5 class="text-uppercase mb-3"><?= $row_chitiet['ten']; ?></h5>
-                                <h6><i>Xếp loại: </i><b style="color:orange ;">
-                                        <?php 
-                                        rating($row_chitiet['xeploai']);
-                                            // for ($i=0;$i< (int)$row_chitiet['xeploai'];$i++) echo "<i class='bi bi-star-fill'></i>";
-                                            // if (($row_chitiet['xeploai'] - (int)$row_chitiet['xeploai'] >= 0.3 ) )
-                                            //     echo "<i class='bi bi-star-half'></i>";
-                                            // else  
-                                            //     echo "<i class='bi bi-star'></i>";
-                                            // for ($i=  (int)$row_chitiet['xeploai'] + 1;$i< 5;$i++) 
-                                            //     echo "<i class='bi bi-star'></i>";
-                                        ?>
-                                    </b></h6>
-                                <p><b>Mô tả: </b><?= $row_chitiet['mota']; ?></p>
-                                <table colspan="2">
-                                    <tr>
-                                        <td style="width: 800px;"><h5>Loại vé: Người lớn</h5></td>
-                                        
-                                    </tr>
-                                    <tr><td><h5 style="color:orange ;">&emsp;Giá: 2.000.000 VND</h5></td></tr>
-                                </table>
-                                <table colspan="2">
-                                    <tr>
-                                        <td style="width: 800px;"><h5>Loại vé: Trẻ em</h5></td>
-                                        
-                                    </tr>
-                                    <tr><td><h5 style="color:orange ;">&emsp;Giá: 2.000.000 VND</h5></td></tr>
-                                </table>
-                                
-                                    <table>
-                                        <tr>
-                                        <td>
-                                            <a href="./index.php?trang=1">
-                                                <button class="btn btn-primary py-2 px-3">Quay lại</button>
-                                            </a>
-                                        </td>
-                                        <td><a> &ensp;</a></td>
-                                        <td>
-                                            <form action="" method="POST">    
-                                                <button class="btn btn-primary py-2 px-3" type="submit" name="addtocart">
-                                                    Thêm Giỏ hàng
-                                                </button>
-                                            </form>
-                                        </td>
-                                        </tr>
-                                    </table>
-                                    
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4 col-12">
+                <img class="img-fluid mb-4" src="./dashboard/img_staff/<?= $row_chitiet['avatar']; ?>" alt=""
+                    style="width: 300px;height: 300px; border-radius: 1000px; resize: vertical;"
+                >
+                <input style="margin-bottom:10px" type="file" name="anhdaidien" class="form-control-file">
+                <input type="hidden" name="anhdaidien" value="<?php echo $row_chitiet['avatar']?>">
             </div>
+            <div class="col-sm-6">
+                <table>
+                    <tr>
+                        <td><p><b>Họ và tên &emsp;&emsp;&emsp;</b></p></td>
+                        <td>
+                            <input
+                                class="form-control"
+                                style="border-radius: 50px;"
+                                type="text"
+                                required
+                                value="<?php echo $row_chitiet['name'] ?>"
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p><b>Email</b></p></td>
+                        <td>
+                            <input
+                                class="form-control"
+                                style="border-radius: 50px;"
+                                type="text"
+                                required
+                                value="<?php echo $row_chitiet['email'] ?>"
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p><b>SĐT</b></p></td>
+                        <td>
+                            <input
+                                class="form-control"
+                                style="border-radius: 50px;"
+                                type="text"
+                                pattern="[0-9]{10}" 
+                                required
+                                value="<?php echo $row_chitiet['sdt'] ?>"
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p><b>Địa chỉ</b></p></td>
+                        <td>
+                            <input
+                                class="form-control"
+                                style="border-radius: 50px;"
+                                type="text"
+                                required
+                                value="<?php echo $row_chitiet['diachi'] ?>"
+                            >
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><p><b>Giới tính</b></p></td>
+                        <td>
+                        <input type="radio" name="gioitinh"value="1" <?php if($row_chitiet['gioitinh'] == 1) echo 'checked';?>>
+                        <label class="mr-2">Nam</label>
+                        <input type="radio" name="gioitinh" value="0" <?php if($row_chitiet['gioitinh'] == 0) echo 'checked';?>>
+                        <label>Nữ</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><p><b>Ngày sinh</b></p></td>
+                        <td>
+                            <input
+                                class="form-control"
+                                style="border-radius: 50px;"
+                                type="date"
+                                required
+                                value="<?php echo $row_chitiet['ngaysinh'] ?>"
+                            >
+                        </td>
+                    </tr>
+                    
+                    <!-- <tr>
+                        <td><p><b>Địa chỉ</b></p></td>
+                        <td>
+                            <input
+                                class="form-control"
+                                style="border-radius: 50px;"
+                                type="text"
+                                required
+                                value="<?php echo $row_chitiet['diachi'] ?>"
+                            >
+                        </td>
+                    </tr> -->
+                </table>
+            </div>
+            <div class="col-sm-2"></div>
         </div>
     </div>
     <?php } ?>

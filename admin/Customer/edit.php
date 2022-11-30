@@ -112,7 +112,7 @@
                 <div class="form-group">
                   <div><label>Giới tính</label></div>
                   <div>
-                  <input type="radio" name="gioitinh"value="1" <?php if($row['gioitinh'] == 1) echo 'checked';?>>
+                    <input type="radio" name="gioitinh"value="1" <?php if($row['gioitinh'] == 1) echo 'checked';?>>
                     <label class="mr-2">Nam</label>
                     <input type="radio" name="gioitinh" value="0" <?php if($row['gioitinh'] == 0) echo 'checked';?>>
                     <label>Nữ</label>

@@ -134,7 +134,7 @@
                                 ?>
                               </td>
                               <td><?php echo $row['email_khachhang']?></td>
-                              <td><?php echo $row['ngaythanhtoan']?></td>
+                              <td><?php echo date("d-m-Y", strtotime($row['ngaythanhtoan'])) ?></td>
                               
                               
                               <td><?php
@@ -145,7 +145,7 @@
                                   echo mysqli_num_rows($result);
                               ?></td>
 
-                              <td><?php echo $row['tongtien']?></td>
+                              <td><?php echo number_format($row['tongtien'], 0, ',', '.')?></td>
 
                               <td align="center">
                                 <div class="btn-group">
@@ -196,7 +196,7 @@
                             echo mysqli_num_rows($result);
                         ?></td>
 
-                        <td><?php echo $row['tongtien']?></td>
+                        <td><?php echo number_format($row['tongtien'], 0, ',', '.')."&ensp;VND"?></td>
 
                         <td align="center">
                           <div class="btn-group">

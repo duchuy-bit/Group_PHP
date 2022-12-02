@@ -72,7 +72,7 @@
                         <td>
                             <label>Tổng tiền</label>
                         </td>
-                        <td><?php echo $row['tongtien'] ."&nbsp;&nbsp;VNĐ"?></td>
+                        <td><?php echo number_format($row['tongtien'], 0, ',', '.')   ."&nbsp;&nbsp;VNĐ"?></td>
                     </tr>
                 </tbody>
             </table>
@@ -115,12 +115,12 @@
                                 if ($rowtam['loaive'] === '0') echo "Trẻ nhỏ";
                                 if ($rowtam['loaive'] === '1') echo "Người lớn";
                             ?></td>
-                            <td><?php echo $rowtam['giatien'] ."&nbsp;&nbsp;VNĐ" ?></td>
+                            <td><?php echo number_format($rowtam['giatien'], 0, ',', '.')  ."&nbsp;&nbsp;VNĐ" ?></td>
                             <td><?php echo $rowtam['sl'] ?></td>
                             <td><?php
                                 $giatien= (int)$rowtam['giatien'];
                                 $sl = (int)$rowtam['sl'];
-                                echo  $giatien * $sl."&nbsp;&nbsp;VNĐ"
+                                echo number_format($giatien * $sl, 0, ',', '.') ."&nbsp;&nbsp;VNĐ"
                             ?></td>
                         </tr>
                     <?php

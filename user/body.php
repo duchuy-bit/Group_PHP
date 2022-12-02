@@ -178,7 +178,7 @@
                                     ?></b></h6>
                             <div class="btn-action d-flex justify-content-center">
                                 <!-- <form> -->
-                                    <a class="btn btn-primary py-2 px-3"><i class="bi bi-cart"></i></a>
+                                    <a class="btn btn-primary py-2 px-3" href="addtocart.php?id=<?php echo $row['id'] ?>"><i class="bi bi-cart"></i></a>
                                 <!-- </form> -->
                                 <a class="py-1 px-1"></a>
                                 <a class="btn btn-primary py-2 px-3" href="ctsp.php?id=<?=$row['id'] ?>"><i class="bi bi-eye"></i></a>

@@ -70,6 +70,8 @@
         }
         
     }
+
+
     if(isset($_GET['luu'])){
         $subToTal = $_GET['luu'];
         $dateNow = date("Y/m/d");
@@ -117,8 +119,20 @@
                     }
             }
         }
-        mysqli_query($conn,"DELETE FROM `giohang` WHERE id_khachhang=$id_customer");
+        // mysqli_query($conn,"DELETE FROM `giohang` WHERE id_khachhang=$id_customer");
 
-        header('Location:giohang.php');
+        
+        $result= mysqli_query($conn,"SELECT *  FROM hoadon  WHERE id_khachhang=$id_customer 
+        ORDER BY id DESC LIMIT 1");
+        // while (
+            $row = mysqli_fetch_array($result);
+            // ){
+            // echo $row['id'];
+        // }
+        ?>
+            <script>window.location.href = "billinfo.php?id=<?php echo $row['id']; ?>";</script>
+        <?php
+
+        // header('Location:giohang.php');
         // for()
-}
+    }

@@ -89,9 +89,10 @@
                     <th style="width: auto">Giới tính</th>
                     <th style="width: auto">Ảnh đại diện</th>
                     <th style="width: auto">Chức vụ</th>
-                    <th style="width: auto">Số ca</th>
+                    <!-- <th style="width: auto">Số ca</th> -->
                     <th style="width: auto">Email</th>
-                    <th style="width: auto">Mật khẩu</th>
+                    <!-- <th style="width: auto">Mật khẩu</th> -->
+                    <th style="width: auto">Lương</th>
                     <th style="width: auto">Chức năng</th>
                   </tr>
                 </thead>
@@ -116,9 +117,14 @@
                                 <img src="../dashboard/img_staff/<?php echo $row['anh']?>" alt="<?php echo $row['anh']?>" width="100px" height="100px">
                               </td>
                               <td><?php echo $row['tenloai']?></td>
-                              <td><?php echo $row['soca']?></td>
+                              <!-- <td><?php echo $row['soca']?></td> -->
                               <td><?php echo $row['email']?></td>
-                              <td><?php custom_echo($row['matkhau'], 10);?></td>
+                              <!-- <td><?php custom_echo($row['matkhau'], 10);?></td> -->
+                              <td><?php 
+                                $luong = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM nhanvien inner join soca on nhanvien.idnv = soca.idnv 
+                                inner join loai_nv on nhanvien.id_loai = loai_nv.id where idnv = '".$row['idnv']."'"));
+                                echo (int)$luong['soca'] * (int)$luong['luongcoban'];
+                              ?></td>
                               <td>
                                 <div class="btn-group">
                                   <abbr title="Sửa dữ liệu">
@@ -157,9 +163,17 @@
                           <img src="../dashboard/img_staff/<?php echo $row['anh']?>" alt="<?php echo $row['anh']?>" width="100px" height="100px">
                         </td>
                         <td><?php echo $row['tenloai']?></td>
-                        <td><?php echo $row['soca']?></td>
+                        <!-- <td><?php echo $row['soca']?></td> -->
                         <td><?php echo $row['email']?></td>
-                        <td><?php custom_echo($row['matkhau'], 10);?></td>
+                        <!-- <td><?php custom_echo($row['matkhau'], 10);?></td> -->
+                        <td><?php 
+                                $luong = mysqli_fetch_array(mysqli_query($conn, "SELECT * FROM nhanvien 
+                                inner join soca on nhanvien.idnv = soca.id_nv 
+                                inner join loai_nv on nhanvien.id_loai = loai_nv.id where nhanvien.idnv = '".$row['idnv']."'"));
+                                // echo (int)$luong['soca'] * (int)$luong['luongcoban'];
+                                $tongluong = ((int)$luong['soca']) * ((int)$luong['luongcoban']/30);
+                                echo number_format($tongluong, 0, ',', '.')." VND";
+                              ?></td>
                         <td>
                           <div class="btn-group">
                             <abbr title="Sửa dữ liệu">

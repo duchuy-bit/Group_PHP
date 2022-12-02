@@ -34,7 +34,16 @@
         VALUES ('$ten', '$diachi', '$ntns', '$sdt', '$gioitinh', '$anhdaidien', '$email', '$pass', '$id_loainv', '$soca')";
       $conn = get_connection();
       if (mysqli_query($conn, $sql)) {
-        $sql1 = "INSERT into soca (soca) VALUES ('$soca')";
+        $getidnv = mysqli_query($conn, "SELECT * FROM nhanvien");
+
+        $d=0; $idnv='';
+        while ($resultidnv = mysqli_fetch_array($getidnv))
+        {
+          $d++;
+          if ($d === mysqli_num_rows($getidnv)) $idnv= $resultidnv['idnv'];
+        }
+        // $resultidnv = mysqli_fetch_array($getidnv);
+        $sql1 = "INSERT INTO `soca`(`id`, `id_nv`, `soca`) VALUES (null,'".$idnv."','$soca')";
         mysqli_query($conn, $sql1);
 ?>
         <script>window.location.href = 'master.php?act=page_dsnv';</script>

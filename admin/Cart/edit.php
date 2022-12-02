@@ -253,10 +253,10 @@
                                 from dichvu inner join gia on gia.id_dichvu = dichvu.id
                                 where dichvu.id = '".$listFilter[$i]."'";
                                 $result = mysqli_query($conn, $sqltamthoi);
-                                echo "<label>Người lớn: </label>";
+                                echo "<label>Người lớn: &emsp;</label>";
                                 while($rowtamthoi= mysqli_fetch_array($result)){
                                     if ($rowtamthoi['loaive'] === '1'){
-                                        echo $rowtamthoi['giatien']."VND<br>";
+                                        echo number_format($rowtamthoi['giatien'], 0, ',', '.')."VND<br>";
                                     }
                                 }
 
@@ -268,12 +268,12 @@
                                     }
                                 }
                                 if ($dem!==0){
-                                    echo "<label>Trẻ em: </label>";
+                                    echo "<label>Trẻ em: &emsp;&emsp;</label>";
                                     $result = mysqli_query($conn, $sqltamthoi);
                                     $dem=0;
                                     while($rowtamthoi= mysqli_fetch_array($result)){
                                         if ($rowtamthoi['loaive'] === '0'){
-                                            echo $rowtamthoi['giatien']."VND<br>";
+                                            echo number_format($rowtamthoi['giatien'], 0, ',', '.')."VND<br>";
                                         }
                                     }
                                 }

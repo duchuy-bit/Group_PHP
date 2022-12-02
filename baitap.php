@@ -53,40 +53,49 @@
             <div class="col-xs-12 col-md-4 d-flex justify-content-center">
                 <div style="align-items: center;">
                     <h5>FORM PHP</h5>
-                    <a href="#" style="font-size: 20px;"> - Bài 1 - </a></br>
-                    <a href="#" style="font-size: 20px;"> - Bài 2 - </a></br>
-                    <a href="#" style="font-size: 20px;"> - Bài 3 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 4 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 5 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 6 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 7 - </a><br>
+                    <!-- <a href="./btth//form/btform.php" style="font-size: 20px;"> - Bài 1 - </a></br>
+                    <a href="./btth//form/bt2.php" style="font-size: 20px;"> - Bài 2 - </a></br>
+                    <a href="./btth//form/tiendien.php" style="font-size: 20px;"> - Bài 3 - </a><br>
+                    <a href="./btth//form/thiDH.php" style="font-size: 20px;"> - Bài 4 - </a><br>
+                    <a href="./btth//form/karaOK.php" style="font-size: 20px;"> - Bài 5 - </a><br>
+                    <a href="./btth//form/tinhtoan.php" style="font-size: 20px;"> - Bài 6 - </a><br>
+                    <a href="./btth//form/tinhtoanV2.php" style="font-size: 20px;"> - Bài 7 - </a><br>
+                    <a href="./btth//form/bt8.php" style="font-size: 20px;"> - Bài 8 - </a><br> -->
+                    <a href="configbt.php?act=1_1" style="font-size: 20px;"> - Bài 1 - </a></br>
+                    <a href="configbt.php?act=1_2" style="font-size: 20px;"> - Bài 2 - </a></br>
+                    <a href="configbt.php?act=1_3" style="font-size: 20px;"> - Bài 3 - </a><br>
+                    <a href="configbt.php?act=1_4" style="font-size: 20px;"> - Bài 4 - </a><br>
+                    <a href="configbt.php?act=1_5" style="font-size: 20px;"> - Bài 5 - </a><br>
+                    <a href="configbt.php?act=1_6" style="font-size: 20px;"> - Bài 6 - </a><br>
+                    <a href="configbt.php?act=1_7" style="font-size: 20px;"> - Bài 7 - </a><br>
+                    <a href="configbt.php?act=1_8" style="font-size: 20px;"> - Bài 8 - </a><br>
                 </div>
             </div>
             <div class="col-xs-12 col-md-4 d-flex justify-content-center">
             <div style="align-items: center;">
                     <h5>ARRAY PHP</h5>
-                    <a href="#" style="font-size: 20px;"> - Bài 1 - </a></br>
-                    <a href="#" style="font-size: 20px;"> - Bài 2 - </a></br>
-                    <a href="#" style="font-size: 20px;"> - Bài 3 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 4 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 5 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 6 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 7 - </a><br>
+                    <a href="configbt.php?act=2_1" style="font-size: 20px;"> - Bài 1 - </a></br>
+                    <a href="configbt.php?act=2_2" style="font-size: 20px;"> - Bài 2 - </a></br>
+                    <a href="configbt.php?act=2_3" style="font-size: 20px;"> - Bài 3 - </a><br>
+                    <a href="configbt.php?act=2_4" style="font-size: 20px;"> - Bài 4 - </a><br>
+                    <a href="configbt.php?act=2_5" style="font-size: 20px;"> - Bài 5 - </a><br>
+                    <a href="configbt.php?act=2_6" style="font-size: 20px;"> - Bài 6 - </a><br>
+                    <a href="configbt.php?act=2_7" style="font-size: 20px;"> - Bài 7 - </a><br>
                 </div>
             </div>
             <div class="col-xs-12 col-md-4 d-flex justify-content-center">
             <div style="align-items: center;">
                     <h5>SQL + PHP</h5>
-                    <a href="#" style="font-size: 20px;"> - Bài 1 - </a></br>
-                    <a href="#" style="font-size: 20px;"> - Bài 2 - </a></br>
-                    <a href="#" style="font-size: 20px;"> - Bài 3 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 4 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 5 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 6 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 7 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 8 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 9 - </a><br>
-                    <a href="#" style="font-size: 20px;"> - Bài 10 - </a><br>
+                    <a href="configbt.php?act=3_1" style="font-size: 20px;"> - Bài 1 - </a></br>
+                    <a href="configbt.php?act=3_2" style="font-size: 20px;"> - Bài 2 - </a></br>
+                    <a href="configbt.php?act=3_3" style="font-size: 20px;"> - Bài 3 - </a><br>
+                    <a href="./btth/sql/2.4.php" style="font-size: 20px;"> - Bài 4 - </a><br>
+                    <a href="configbt.php?act=3_5" style="font-size: 20px;"> - Bài 5 - </a><br>
+                    <a href="configbt.php?act=3_6" style="font-size: 20px;"> - Bài 6 - </a><br>
+                    <a href="configbt.php?act=3_7" style="font-size: 20px;"> - Bài 7 - </a><br>
+                    <a href="./btth/sql/2.8.php" style="font-size: 20px;"> - Bài 8 - </a><br>
+                    <a href="configbt.php?act=3_9" style="font-size: 20px;"> - Bài 9 - </a><br>
+                    <!-- <a href="configbt.php?act=3_10" style="font-size: 20px;"> - Bài 10 - </a><br> -->
                 </div>
             </div>
         </div>

@@ -113,7 +113,7 @@
                         $key = $_POST['key'];
                           $d=0;
                           $sqlSearch = "SELECT * FROM dichvu 
-                            where ten like '%$key%' or xeploai like '%$key%' or diachi like '%$key%' LIMIT $begin,15";
+                            where ten like '%$key%' or xeploai like '$key' or diachi like '%$key%' or sdt like '%$key%'  LIMIT $begin,15";
                           $qr = mysqli_query ($conn , $sqlSearch);
                             while ( $row = mysqli_fetch_array($qr)) {
                               $d++;
@@ -147,7 +147,7 @@
                                       echo "Người lớn: &nbsp; ";
                                     else 
                                       echo "Trẻ nhỏ: &emsp; &nbsp;";
-                                    echo $rowtam['giatien'] ." VND<br>";
+                                    echo  number_format($rowtam['giatien'], 0, ',', '.')." VND<br>";
                                   }
                                   echo "</div>";
                                 }
@@ -211,7 +211,7 @@
                                 echo "Người lớn: &nbsp; ";
                               else 
                                 echo "Trẻ nhỏ: &emsp; &nbsp;";
-                              echo $rowtam['giatien'] ." VND<br>";
+                              echo number_format($rowtam['giatien'], 0, ',', '.') ." VND<br>";
                             }
                             echo "</div>";
                           }

@@ -228,6 +228,16 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="../index.php" class="nav-link">
+                      <i class="fas fa-users nav-icon ml-2"></i>
+                      <p>
+                          User Home Page
+                          <i class="fas fa-angle-left right"></i>
+                      </p>
+                </a>
+              </li>
+
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-users nav-icon ml-2"></i>
@@ -253,6 +263,52 @@
                 </li>
             </ul>
           </li>
+<!-- Account -->
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-user-secret"></i>
+              <p>
+                Account 
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                  <a href="#" class="nav-link">
+                      <i class="fas fa-users nav-icon ml-2"></i>
+                      <p>
+                          <?php
+                            $conn=mysqli_connect('37.59.55.185','EskUSL83Cb','awaNOX5Q9v', 'EskUSL83Cb');
+                            if ($_COOKIE["type"] === 'admin'){
+                              // echo "ok";
+                              $result = mysqli_query($conn, "SELECT * from nhanvien where idnv ='".$_COOKIE['login']."'");
+                              $row = mysqli_fetch_array($result);
+                              echo $row['ten'];
+                            }
+                            else{
+                              ?>
+                                <script>window.location.href = '../admin/loginadmin.php';</script>
+                              <?php
+                            }
+
+                          ?>
+                          <i class="fas fa-angle-left right"></i>
+                      </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                  <a href="logoutadmin.php" class="nav-link">
+                      <i class="fas fa-users nav-icon ml-2"></i>
+                      <p>
+                          Log out
+                          <i class="fas fa-angle-left right"></i>
+                      </p>
+                </a>
+              </li>
+                
+            </ul>
+          </li>
+
           <li class="nav-header">REPORT</li>
           <li class="nav-item">
             <a href="#" class="nav-link">

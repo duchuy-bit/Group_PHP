@@ -124,10 +124,10 @@
 				
 			</div>
 
-			<input type="text" name="name" placeholder="Name" />
-			<input type="phone" name="sdt" pattern="[0-9]{10}" placeholder="Phone" />
-			<input type="email" name="email" placeholder="Email" />
-			<input type="password" name="matkhau" placeholder="Password" />
+			<input type="text" name="name" placeholder="Name" required/>
+			<input type="phone" name="sdt" required pattern="[0-9]{10}" placeholder="Phone" />
+			<input type="email" name="email" required placeholder="Email" />
+			<input type="password" name="matkhau" required placeholder="Password" />
 			<button name="dki">Xác nhận</button>
 		</form>
 	</div>
@@ -136,8 +136,8 @@
 			<h1>Đăng nhập</h1>
 			<div class="social-container">
 			</div>
-			<input type="email" name="email" placeholder="Email" />
-			<input type="password" name="matkhau" placeholder="Password" />
+			<input type="email" name="email" placeholder="Email" required/>
+			<input type="password" name="matkhau" placeholder="Password" required/>
 			<a href="forgotpassword.php">Quên mật khẩu?
 				
 			</a>

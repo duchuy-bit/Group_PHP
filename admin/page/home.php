@@ -27,7 +27,11 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3><?php
+                  $conn = get_connection();
+                  $result =mysqli_query($conn, 'SELECT * FROM hoadon');
+                  echo mysqli_num_rows($result);
+                ?></h3>
 
                 <p>New Orders</p>
               </div>
@@ -42,9 +46,13 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3><?php
+                  $conn = get_connection();
+                  $result =mysqli_query($conn, 'SELECT * FROM dichvu');
+                  echo mysqli_num_rows($result);
+                ?></h3>
 
-                <p>Bounce Rate</p>
+                <p>Service</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -57,7 +65,11 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3><?php
+                  $conn = get_connection();
+                  $result =mysqli_query($conn, 'SELECT * FROM khachhang');
+                  echo mysqli_num_rows($result);
+                ?></h3>
 
                 <p>User Registrations</p>
               </div>
@@ -72,9 +84,13 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3><?php
+                  $conn = get_connection();
+                  $result =mysqli_query($conn, 'SELECT * FROM nhanvien');
+                  echo mysqli_num_rows($result);
+                ?></h3>
 
-                <p>Unique Visitors</p>
+                <p>Staff</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

@@ -119,9 +119,10 @@
                     }
             }
         }
-        // mysqli_query($conn,"DELETE FROM `giohang` WHERE id_khachhang=$id_customer");
+        // Xóa dich vu trong gio hang
+        mysqli_query($conn,"DELETE FROM `giohang` WHERE id_khachhang=$id_customer");
 
-        
+        // get id hoa don
         $result= mysqli_query($conn,"SELECT *  FROM hoadon  WHERE id_khachhang=$id_customer 
         ORDER BY id DESC LIMIT 1");
         // while (

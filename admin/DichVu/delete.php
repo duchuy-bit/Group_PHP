@@ -17,6 +17,6 @@
 ?>
         <script>window.location.href = '../master.php?act=page_dsdv';</script>
 <?php
-        $_SESSION['nhanvien'] = "Xóa loại dịch vụ thành công";
+        $_SESSION['nhanvien'] = "Xóa loại dịch vụ thành công ";
     }
 ?>

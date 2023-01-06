@@ -165,7 +165,29 @@
                                         ?>
                                     </b></h6>
                                 <p><b>Mô tả: </b><?= $row_chitiet['mota']; ?></p>
-                                <table colspan="2">
+                                <table>
+                                    <th style="width: 500px;"></th>
+                                    <th></th>
+                                    <?php
+                                        $resultgia= mysqli_query($conn, 
+                                            "SELECT * FROM gia where id_dichvu = '".$row_chitiet['id']."'"
+                                        );
+                                        // if (mysqli_num_rows($resultgia) === 2){
+                                            while ($rowgia = mysqli_fetch_array($resultgia)){
+                                                if ($rowgia['loaive'] == 1){
+                                                    echo "<tr><td ><h5>Loại vé: Người lớn</h5></td></tr>";
+                                                    echo "<tr><td><h5 style='color:orange ;'>&emsp;Giá: ".number_format($rowgia['giatien'], 0, ',', '.')." VND</h5></td></tr>";
+                                                }
+                                                if ($rowgia['loaive'] == 0){
+                                                    echo "<tr><td ><h5>Loại vé: Trẻ em</h5></td></tr>";
+                                                    echo "<tr><td><h5 style='color:orange ;'>&emsp;Giá: ".number_format($rowgia['giatien'], 0, ',', '.')." VND</h5></td></tr>";
+                                                }
+                                            }
+                                        // }
+                                        
+                                    ?>
+                                </table>
+                                <!-- <table colspan="2">
                                     <tr>
                                         <td style="width: 800px;"><h5>Loại vé: Người lớn</h5></td>
                                         
@@ -178,7 +200,7 @@
                                         
                                     </tr>
                                     <tr><td><h5 style="color:orange ;">&emsp;Giá: 2.000.000 VND</h5></td></tr>
-                                </table>
+                                </table> -->
                                 
                                     <table>
                                         <tr>

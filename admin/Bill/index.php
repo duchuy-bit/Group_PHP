@@ -22,9 +22,24 @@
 
 <?php
   $conn = get_connection();
-  $sql = "SELECT * FROM hoadon";
+  // $sql = "SELECT * FROM hoadon";
+  // $dsnv = mysqli_query($conn, $sql);
+
+  if(isset($_GET['trang'])){
+      $page=$_GET['trang'];
+  } else {
+      $page = '';
+  }
+  if($page == '' || $page == 1){
+      $begin = 0; // biến bắt đầu sẽ chạy từ 0
+  }else {
+      $begin = ($page*15)-15;
+  }
+
+  $conn = get_connection();
+  $sql = "SELECT * FROM hoadon LIMIT $begin,15";
   $dsnv = mysqli_query($conn, $sql);
-?>
+  ?>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -185,7 +200,7 @@
                           ?>
                         </td>
                         <td><?php echo $row['email_khachhang']?></td>
-                        <td><?php echo $row['ngaythanhtoan']?></td>
+                        <td><?php echo date("d-m-Y", strtotime($row['ngaythanhtoan']))?></td>
                         
                         
                         <td><?php
@@ -220,6 +235,51 @@
                     ?>
                 </tbody>
             </table>
+            <div style="clear:both;"></div>
+                <style type="text/css">
+                    ul.list_trang {
+                        padding: 0;
+                        margin: 0;
+                        list-style: none;
+                        align-self: center;
+                        justify-content: center;
+                        align-items: center;
+                        text-align: center;
+                        display: flex;
+                        /* margin-left: 45%; */
+                    }
+                    ul.list_trang li {
+                        float: left;
+                        padding: 5px 13px;
+                        /* margin: 5px; */
+                        /* background: burlywood; */
+                        
+                    }
+                    ul.list_trang li a {
+                        color: #000;
+                        text-align: center;
+                        text-decoration: none;
+                    }
+                </style>
+                    
+                    <?php 
+                        $sql_trang= mysqli_query($conn,"SELECT * FROM `hoadon`");
+                        $row_count = mysqli_num_rows($sql_trang);//đếm số lượng phần tử trong sql
+                        $trang = ceil($row_count/15); 
+                    ?>
+                    <ul class="list_trang">
+                        <?php
+                        for($i=1; $i<=$trang;$i++){
+                        ?>
+                        <li>
+                            <a onclick="myFunction()" href="master.php?act=page_dsbill&trang=<?php echo $i ?>">
+                                <button class="btn btn-primary"><?php echo $i ?></button>
+                            </a>
+                        </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
         </div>
         <!-- /.card-body -->
       </div>

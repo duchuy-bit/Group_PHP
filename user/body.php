@@ -43,8 +43,9 @@
                         <a href="amthuc.php" class="dropdown-item">Ẩm thực</a>
                     </div>
                 </div>
-                <a href="baitap.php" class="nav-item nav-link">Bài tập</a>
-                <a href="thongtin.php" class="nav-item nav-link">Thông tin</a>
+                <a href="find.php" class="nav-item nav-link">Tìm kiếm</a>
+                <!-- <a href="baitap.php" class="nav-item nav-link">Bài tập</a>
+                <a href="thongtin.php" class="nav-item nav-link">Thông tin</a> -->
                 <!-- -------------------------ADMIN -------------------------- -->
                 <?php
                     if( isset($_COOKIE["type"]))
@@ -153,7 +154,7 @@
         <div class="container">
             <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
                 <h6 class="text-primary text-uppercase">Dịch vụ</h6>
-                <h1 class="display-5 text-uppercase mb-0">Sản phẩm dành cho bạn</h1>
+                <h3 class=" text-uppercase mb-0">Sản phẩm dành cho bạn</h3>
             </div>
             <div id="div1" class="row text-center py-5">
             <!-- <div class="owl-carousel product-carousel"> -->
